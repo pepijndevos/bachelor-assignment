@@ -26,9 +26,15 @@ plt.figure()
 plt.plot(H.real, H.imag, "b")
 plt.plot(H.real, -H.imag, "r")
 
+# I would like to combine those, but the scale is way too different
 plt.figure()
-plt.semilogx(wb, 20*np.log10(mag))    # Bode magnitude plot
+plt.plot(sys.poles.real, sys.poles.imag, "X")
+plt.plot(sys.zeros.real, sys.zeros.imag, "o")
+
 plt.figure()
+plt.subplot(211)
+plt.semilogx(wb, mag)    # Bode magnitude plot
+plt.subplot(212)
 plt.semilogx(wb, phase)  # Bode phase plot
 
 plt.figure()
