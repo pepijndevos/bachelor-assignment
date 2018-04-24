@@ -4,8 +4,8 @@ from scipy import signal
 from math import sqrt, pi
 
 R = 4
-C = 0.332e-6
-L = 21.3e-6
+C = 1e-6
+L = 64e-6
 
 #actually D'
 Dmin = 1/3
@@ -45,9 +45,10 @@ def bodeplots(R, L, C, num):
     ax2.legend()
 
 def polebode(R, L, C, num):
-    plt.figure()
-    plt.grid(which='both')
     for D in np.linspace(Dmin, Dmax, num):
+        plt.figure()
+        plt.grid(which='both')
+
         sys = ctl2out(R, L, C, D)
 
         pz = signal.TransferFunction([1], [-1/sys.poles[0], 1])
@@ -62,7 +63,7 @@ def polebode(R, L, C, num):
         wb, mag, phase = pz.bode()
         plt.semilogx(wb/2/pi, mag, label="Z D=%.2f"%D)    # Bode magnitude plot
 
-    plt.legend()
+        plt.legend()
 
 def step(R, L, C, num):
     plt.figure()
@@ -94,10 +95,14 @@ def poles(R, L, C, num):
 
 if __name__ == "__main__":
     polebode(R, L, C, 2)
+    plt.savefig('polebode.pdf', bbox_inches='tight')
     bodeplots(R, L, C, 5)
+    plt.savefig('bode.pdf', bbox_inches='tight')
     step(R, L, C, 8)
+    plt.savefig('step.pdf', bbox_inches='tight')
     poles(R, L, C, 15)
-    plt.show()
+    plt.savefig('poles.pdf', bbox_inches='tight')
+    #plt.show()
 
 if False:
 
@@ -106,14 +111,5 @@ if False:
     plt.figure()
     plt.plot(H.real, H.imag, "b")
     plt.plot(H.real, -H.imag, "r")
-
-    # I would like to combine those, but the scale is way too different
-    plt.figure()
-    plt.plot(sys.poles.real, sys.poles.imag, "X")
-    plt.plot(sys.zeros.real, sys.zeros.imag, "o")
-
-
-    plt.figure()
-    plt.plot(t, yout)
 
     plt.show()
