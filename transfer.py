@@ -10,6 +10,7 @@ L = 64e-6
 #actually D'
 Dmin = 1/3
 Dmax = 1
+D0 = 1/2
 
 def ctl2out(R, L, C, D):
     w0 = D/sqrt(L*C)
@@ -17,7 +18,7 @@ def ctl2out(R, L, C, D):
     Q = D*R*sqrt(C/L)
     print(w0/2/pi, wz/2/pi, Q)
     return signal.TransferFunction(
-        [-1/wz, 1],
+        [-1/wz*(1-D/D0), 1],
         #[1],
         [1/w0**2, 1/(w0*Q), 1])
 
@@ -102,7 +103,7 @@ if __name__ == "__main__":
     plt.savefig('step.pdf', bbox_inches='tight')
     poles(R, L, C, 15)
     plt.savefig('poles.pdf', bbox_inches='tight')
-    #plt.show()
+    plt.show()
 
 if False:
 
