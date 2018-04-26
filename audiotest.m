@@ -1,4 +1,8 @@
-[y, Fs] = audioread('sultans.wav');
+R = 4;
+C = 1e-6;
+L = 64*C;
+
+[y, Fs] = audioread('sultans.wav', [44100, 2*44100]);
 Ts=1/Fs;
 dur=length(y)*Ts;
 t=linspace(0,dur,length(y));
@@ -10,7 +14,7 @@ ys1=yp1*2/3+1/3;
 D1=timeseries(ys1*2-1, t);
 
 yp2=(-ym+1)/2;
-ys2=1./(yp2*2/3+1/3)/3;
+%ys2=1./(yp2*2/3+1/3)/3;
 ys2=yp2*2/3+1/3;
 D2=timeseries(ys2*2-1, t);
 
