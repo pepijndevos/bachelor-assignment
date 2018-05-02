@@ -8,11 +8,15 @@ D0 = 0.5;
 
 D = linspace(0.2,0.8);
 V = (1-2*D)./(D-D.^2);
-pre = (V-V.^2)./(1-2*V);
-plot(D, pre);
+figure()
+hold on
+plot(D, V);
 xlim([0.2, 0.8]);
 xlabel('D');
 ylabel('Vout');
+V = linspace(-4,4);
+D=2./(V*1.1+2+sqrt(4+(V*1.1).^2));
+plot(D, V);
 
 %% relation between D
 
