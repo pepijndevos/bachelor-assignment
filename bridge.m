@@ -3,6 +3,17 @@ C = 1e-6;
 L = 64*C;
 D0 = 0.5;
 
+
+%% D transfer
+
+D = linspace(0.2,0.8);
+V = (1-2*D)./(D-D.^2);
+pre = (V-V.^2)./(1-2*V);
+plot(D, pre);
+xlim([0.2, 0.8]);
+xlabel('D');
+ylabel('Vout');
+
 %% relation between D
 
 D1 = 0.42

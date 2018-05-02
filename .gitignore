@@ -105,3 +105,4 @@ ENV/
 *.autosave
 *.asv
 slprj
+*.png
