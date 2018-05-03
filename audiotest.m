@@ -1,5 +1,5 @@
 R = 8;
-Rc = 100; % common mode damping resistor
+Rc = 1000; % common mode damping resistor
 C = 1e-6;
 L = 4*C;
 
@@ -9,13 +9,13 @@ if 0
 else
     Fs = 441000;
     t = linspace(0,0.1,Fs*0.1);
-    f = 10000;
+    f = 1000;
     ym = sin(2*pi*f*t);
 %     ym = sawtooth(2*pi*f*t, 0.5);
 %     ym(ym > 0) = 1;
 %     ym(ym < 0) = -1;
-%     [b, a] = butter(1, 20000/(Fs/2));
-%     ym = filter(b, a, ym);
+    [b, a] = butter(1, 20000/(Fs/2));
+    ym = filter(b, a, ym);
 end
 
 Ts=1/Fs;
