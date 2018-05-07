@@ -6,17 +6,31 @@ D0 = 0.5;
 
 %% D transfer
 
-D = linspace(0.2,0.8);
+D = linspace(0.1,0.9);
 V = (1-2*D)./(D-D.^2);
 figure()
 hold on
 plot(D, V);
-xlim([0.2, 0.8]);
+%V = 8.5*(0.5-D)+500*(0.5-D).^5;
+V= 4 - 32*(D - 1/2).^3 - 8*D;
+plot(D, V);
+
+
+V = linspace(-4,4);
+D=2./(V+2+sqrt(4+V.^2));
+plot(D, V);
+
+poly = str2sym('2./(V+2+sqrt(4+V.^2))');
+aprox = series(poly, sym('V'), 0, 'Order', 7)
+coef = sym2poly(aprox)
+D=V.^3*coef(1)+V.^3*coef(3)+V*coef(5)+coef(6);
+%D=V.^3/128 - V/8 + 1/2;
+plot(D,V);
+
+xlim([0.1, 0.9]);
 xlabel('D');
 ylabel('Vout');
-V = linspace(-4,4);
-D=2./(V*1.1+2+sqrt(4+(V*1.1).^2));
-plot(D, V);
+legend('V=f(D)', 'aprox', 'D=f(V)')
 
 %% relation between D
 
