@@ -106,3 +106,4 @@ ENV/
 *.asv
 slprj
 *.png
+*.raw
