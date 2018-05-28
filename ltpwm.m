@@ -3,7 +3,7 @@ data = LTspice2Matlab('spice/pwm.raw');
 gnd1 = find(strcmp(data.variable_name_list, 'V(gnd1)'));
 fwd1 = find(strcmp(data.variable_name_list, 'V(fwd1)'));
 loop1 = find(strcmp(data.variable_name_list, 'V(crs1)'));
-gnd2 = find(strcmp(data.variable_name_list, 'V(d^)'));
+gnd2 = find(strcmp(data.variable_name_list, 'V(gnd2)')); % d^
 fwd2 = find(strcmp(data.variable_name_list, 'V(fwd2)'));
 loop2 = find(strcmp(data.variable_name_list, 'V(crs2)'));
 
