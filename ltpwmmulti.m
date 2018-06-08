@@ -1,4 +1,4 @@
-data = LTspice2Matlab('spice/pwm.raw');
+data = LTspice2Matlab('spice/pwm.raw', []);
 %%
 gnd1 = find(strcmp(data.variable_name_list, 'V(gnd1)'));
 fwd1 = find(strcmp(data.variable_name_list, 'V(fwd1)'));
@@ -19,7 +19,8 @@ isw6 = find(strcmp(data.variable_name_list, 'I(S6)'));
 vout1 = find(strcmp(data.variable_name_list, 'V(out1)'));
 vout2 = find(strcmp(data.variable_name_list, 'V(out2)'));
 
-
+data = LTspice2Matlab('spice/pwm.raw', [gnd1, fwd1, loop1, gnd2, fwd2, loop2, il1, il2, isw1, isw2, isw3, isw4, isw5, isw6, vout1, vout2]);
+%%
 t_all = data.time_vect;
 start = find(t_all==t_all(1));
 end_ = find(t_all==t_all(end));
@@ -43,14 +44,14 @@ for idx = 1:length(start)
 
     figure('visible','off')
     ax1 = subplot(2,1,1);
-    area(TT2.Time, TT2(:,[gnd1,loop1,fwd1]).Variables*20)
+    area(TT2.Time, TT2(:,[1,3,2]).Variables*20)
     legend('V(gnd1)','V(loop1)','V(fwd1)')
     ylabel('duty cycle (%)')
     ylim([0,100])
     xlabel('time')
 
     ax2 = subplot(2,1,2);
-    area(TT2.Time, TT2(:,[gnd2,loop2,fwd2]).Variables*20)
+    area(TT2.Time, TT2(:,[4,6,5]).Variables*20)
     legend('V(gnd2)','V(loop2)','V(fwd2)')
     ylabel('duty cycle (%)')
     ylim([0,100])
@@ -60,14 +61,14 @@ for idx = 1:length(start)
 
     figure('visible','off')
     ax3 = subplot(2,1,1);
-    area(TT2.Time, TT2(:,[isw3, isw2, isw1]).Variables)
+    area(TT2.Time, TT2(:,[9, 10, 11]).Variables)
     legend('I(fwd1)','I(loop1)','I(gnd1)')
     ylabel('current (A)')
     xlabel('time')
     ylim([-5,5])
 
     ax4 = subplot(2,1,2);
-    area(TT2.Time, TT2(:,[isw5, isw6, isw4]).Variables)
+    area(TT2.Time, TT2(:,[13, 14, 12]).Variables)
     legend('I(fwd2)','I(loop2)','I(gnd2)')
     ylabel('current (A)')
     xlabel('time')
@@ -77,7 +78,7 @@ for idx = 1:length(start)
 
     figure('visible','off')
     ax5 = axes();
-    plot(TT2.Time, TT2(:,vout1).Variables-TT2(:,vout2).Variables)
+    plot(TT2.Time, TT2(:,15).Variables-TT2(:,15).Variables)
     legend('V(out)')
     ylabel('voltage (V)')
     xlabel('time')
