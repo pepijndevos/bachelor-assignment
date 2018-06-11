@@ -26,8 +26,8 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="1.4"
-     inkscape:cx="202.97213"
-     inkscape:cy="729.71327"
+     inkscape:cx="590.82927"
+     inkscape:cy="773.2847"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -128,7 +128,7 @@
          id="tspan4590"
          x="107.79886"
          y="73.767273"
-         style="font-size:7.05555534px;stroke-width:0.26458332">(1-k)(1-D)</tspan></text>
+         style="font-size:7.05555534px;stroke-width:0.26458332">1-D-k</tspan></text>
     <text
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
@@ -161,7 +161,7 @@
          id="tspan4590-9"
          x="148.57219"
          y="88.931786"
-         style="font-size:7.05555534px;stroke-width:0.26458332">k(1-D)</tspan></text>
+         style="font-size:7.05555534px;stroke-width:0.26458332">k</tspan></text>
     <flowRoot
        xml:space="preserve"
        id="flowRoot4620"
